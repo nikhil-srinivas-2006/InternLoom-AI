@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternLoom AI - Master Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for tables */
+        .table-scroll::-webkit-scrollbar { height: 8px; }
+        .table-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .table-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 p-6 md:p-12">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Header Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">InternLoom AI Dashboard</h1>
+                <p class="text-slate-500 mt-2">Single-page view of all active Job Descriptions, Shortlists, and Reserve pools.</p>
+            </div>
+            <div class="mt-4 md:mt-0 bg-indigo-50 border border-indigo-100 rounded-lg p-4 w-full md:w-auto">
+                <label class="block text-xs font-bold text-indigo-800 uppercase tracking-wider mb-2">Upload sample_output.json</label>
+                <input type="file" id="jsonUpload" accept=".json" class="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-md file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-indigo-600 file:text-white
+                    hover:file:bg-indigo-700 cursor-pointer transition-colors"
+                />
+            </div>
+        </div>
+
+        <!-- Dynamic Content Container -->
+        <div id="dashboardContainer" class="space-y-12">
+            <!-- Default Placeholder State -->
+            <div class="text-center py-20 border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50/50">
+                <svg class="mx-auto h-12 w-12 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-slate-900">No output file loaded</h3>
+                <p class="mt-1 text-sm text-slate-500">Upload your generated JSON file to populate the master shortlists.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadInput = document.getElementById('jsonUpload');
+        const container = document.getElementById('dashboardContainer');
+
+        uploadInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    renderDashboard(data);
+                } catch (error) {
+                    alert("Error parsing JSON file. Please ensure it is the valid output from your InternLoom script.");
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        function renderDashboard(data) {
+            container.innerHTML = ''; // Clear placeholder
+            const roles = Object.keys(data);
+
+            if (roles.length === 0) {
+                container.innerHTML = `<div class="text-center py-10 text-slate-500">No job roles found in the JSON file.</div>`;
+                return;
+            }
+
+            roles.forEach(role => {
+                const roleData = data[role];
+                const shortlist = roleData.shortlist || [];
+                const reserve = roleData.reserve || [];
+                
+                // Construct the HTML for this specific role
+                const roleHTML = `
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        <!-- Role Header -->
+                        <div class="bg-slate-900 px-6 py-5 border-b border-slate-800 flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-white">${role}</h2>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-700 text-slate-300">
+                                ${roleData.available_slots} Slots Available
+                            </span>
+                        </div>
+
+                        <div class="p-6 space-y-8">
+                            <!-- Shortlist Section -->
+                            <div>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                    <h3 class="text-lg font-bold text-slate-800">Shortlisted Candidates (${shortlist.length})</h3>
+                                </div>
+                                ${generateTableHTML(shortlist, 'shortlist')}
+                            </div>
+
+                            <!-- Reserve Pool Section -->
+                            <div>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                    <h3 class="text-lg font-bold text-slate-800">Reserve Pool (${reserve.length})</h3>
+                                </div>
+                                ${generateTableHTML(reserve, 'reserve')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.insertAdjacentHTML('beforeend', roleHTML);
+            });
+        }
+
+        function generateTableHTML(candidates, type) {
+            if (candidates.length === 0) {
+                return `<div class="p-6 text-center text-slate-400 bg-slate-50 rounded-lg border border-dashed border-slate-200">No candidates in this list.</div>`;
+            }
+
+            const isShortlist = type === 'shortlist';
+            const scoreColor = isShortlist ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800';
+
+            let rows = candidates.map(c => `
+                <tr class="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="font-semibold text-slate-900">${c.candidate_name || "Unknown"}</div>
+                        <div class="text-xs text-slate-500 mt-1">${c.file}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-sm font-bold ${scoreColor}">
+                            ${c.score} / 100
+                        </span>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-sm text-slate-600 line-clamp-2" title="${c.reasoning}">${c.reasoning}</p>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-slate-100 text-slate-700">
+                            ${c.parse_status || 'Unknown'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+
+            return `
+                <div class="overflow-x-auto table-scroll rounded-lg border border-slate-200">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider w-1/4">Candidate</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider w-1/6">Score</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider w-1/2">Evaluation Reasoning</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">Parse Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+# =========================
+# API Keys & Secrets
+# =========================
+.env
+
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+.venv/
+
+# =========================
+# Python Cache & Logs
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================
+# Project-Specific Data
+# =========================
+# Ignore temporary downloads from gdown
+temp_drive_downloads/
+
+# (Optional) Uncomment these if you don't want to commit the generated outputs 
+# output/
+# documents/parse_quality_report.csv
+
+# (Optional) Uncomment if you want to keep the dummy resumes local-only
+# data/dummy_resumes/
+
+# =========================
+# OS Generated Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

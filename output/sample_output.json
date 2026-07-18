@@ -1,0 +1,143 @@
+{
+    "Frontend Developer": {
+        "available_slots": 8,
+        "shortlist": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.docx",
+                "score": 82,
+                "reasoning": "The candidate has a strong academic background with a high CGPA of 8.75, and their skills partially match the job description with exact matches in JavaScript, Git, and REST API consumption, as well as implicit matches in React Native which implies familiarity with React.js, granting high points for skill matching. Signal conflict resolution favors the candidate due to their strong practical experience with multiple deployed projects, despite not having an exact match in all required skills.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+                "score": 82,
+                "reasoning": "The candidate has a strong academic background with a high CGPA of 8.75, and their skills show partial matches with the required skills, including JavaScript, React Native, Git, and REST APIs, with implicit matches to frontend development through projects like the Fitness Tracking App, despite not having exact matches for HTML, CSS, or React.js/Next.js. Signal conflict resolution favors the candidate due to their strong practical experience with multiple deployed projects, outweighing the CGPA consideration.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.txt",
+                "score": 74,
+                "reasoning": "The candidate has exact and synonym matches for JavaScript, REST API consumption, and Git/GitHub, and implicit matches for frontend development skills through projects like the Fitness Tracking App built with React Native. Signal conflict resolution favors the candidate due to strong practical experience with multiple deployed projects, despite a non-exact skill match for React.js or Next.js, and a high CGPA of 8.75.",
+                "parse_status": "Clean"
+            }
+        ],
+        "reserve": [],
+        "human_review_required": []
+    },
+    "Backend Developer": {
+        "available_slots": 10,
+        "shortlist": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.docx",
+                "score": 87,
+                "reasoning": "The candidate's skills show exact and synonym matches with the job description, including Python, REST APIs, and Git/GitHub, resulting in high skill matching points. The candidate's high CGPA and multiple deployed projects, such as the Campus Event Management App and Personal Finance Tracker App, demonstrate strong academic and practical abilities, resolving any potential signal conflicts in their favor. The candidate's skills and experience override any concerns about their degree not being a perfect match for the role.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+                "score": 87,
+                "reasoning": "The candidate's skills show exact matches with required skills like Python, REST APIs, and Git/GitHub, and partial matches with skills like SQL or NoSQL DB through SQLite, resulting in high skill matching points. The candidate's high CGPA and multiple deployed projects, such as the Campus Event Management App and Personal Finance Tracker App, demonstrate strong practical skills, resolving any potential signal conflicts in their favor. The candidate's skills and experience override any concerns about their educational background, resulting in a high overall score.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.txt",
+                "score": 82,
+                "reasoning": "The candidate's skills show exact matches with required skills like Python, REST APIs, and Git/GitHub, and partial matches with skills like SQL or NoSQL DB through SQLite, resulting in high skill matching points. Signal conflict resolution favors the candidate due to a high CGPA and multiple deployed projects, demonstrating strong practical skills, thus no penalty is applied. The candidate's non-CS degree is not penalized as their skills match the job description.",
+                "parse_status": "Clean"
+            }
+        ],
+        "reserve": [],
+        "human_review_required": []
+    },
+    "Full Stack Developer": {
+        "available_slots": 7,
+        "shortlist": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.docx",
+                "score": 87,
+                "reasoning": "The candidate's skills show a strong match with the job description, including REST APIs, Git/GitHub, and deployment basics, with equivalent skills in React Native and Firebase, granting full credit for these skills. Signal conflict resolution favors the candidate due to multiple deployed projects, forgiving the non-exact skill match and granting high points, while the high CGPA and relevant degree further support the candidate's strong profile.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+                "score": 87,
+                "reasoning": "The candidate's skills show a strong match with the job description, including REST APIs, Git/GitHub, and database skills, with partial matches for React.js and Node.js through experience with React Native and JavaScript. Signal conflict resolution favors the candidate due to multiple deployed projects, forgiving the non-exact skill match and granting high points for strong practical experience.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.txt",
+                "score": 87,
+                "reasoning": "The candidate's skills show partial matches with the required skills, such as JavaScript and REST APIs, and implicit matches through projects like the Fitness Tracking App, which uses React Native and Firebase, implying familiarity with React.js and Node.js equivalents. Signal conflict resolution favors the candidate due to multiple deployed projects, forgiving the non-exact skill match and educational background, resulting in a high score.",
+                "parse_status": "Clean"
+            }
+        ],
+        "reserve": [],
+        "human_review_required": []
+    },
+    "Database Developer": {
+        "available_slots": 3,
+        "shortlist": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.docx",
+                "score": 20,
+                "reasoning": "The candidate has a strong academic background with a high CGPA of 8.75, but lacks direct skill matches for the Database Developer role, with only SQLite as a partial match. The candidate's projects imply some experience with database concepts, but the lack of explicit skill matches and relevant experience in database development results in a low score.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+                "score": 20,
+                "reasoning": "The candidate has a strong academic background with a high CGPA, but lacks direct experience and skills in database development, with only SQLite as a partial match. Signal conflict resolution penalizes the candidate for weak practical experience in database development despite a strong academic record.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.txt",
+                "score": 20,
+                "reasoning": "The candidate's skills show partial matches with the job description, such as SQLite which implies some knowledge of database concepts, but lacks exact matches for required skills like MySQL or PostgreSQL, schema design, and query writing. Signal conflict resolution penalizes the candidate for high CGPA and zero relevant projects, indicating strong academic but weak practical background for a developer role.",
+                "parse_status": "Clean"
+            }
+        ],
+        "reserve": [],
+        "human_review_required": []
+    },
+    "API Integration Developer": {
+        "available_slots": 2,
+        "shortlist": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.docx",
+                "score": 92,
+                "reasoning": "The candidate's skills show exact matches with required skills like 'REST APIs' and 'Postman', and implicit matches with JSON handling through projects like 'Campus Event Management App' and 'Personal Finance Tracker App'. Signal conflict resolution favors the candidate due to a high CGPA and multiple deployed projects, demonstrating strong practical skills despite a non-perfect skill match.",
+                "parse_status": "Clean"
+            },
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.txt",
+                "score": 92,
+                "reasoning": "The candidate's skills show exact matches with required skills like 'REST APIs' and 'Postman', and implicit matches with JSON handling through projects like 'Campus Event Management App' and 'Personal Finance Tracker App', with a strong academic background and practical experience, thus resolving any signal conflicts in their favor.",
+                "parse_status": "Clean"
+            }
+        ],
+        "reserve": [
+            {
+                "candidate_name": "KAVYA MENON",
+                "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+                "score": 87,
+                "reasoning": "The candidate's skills show exact matches with required skills like 'REST APIs' and 'Postman', and implicit matches with JSON handling through projects like 'Campus Event Management App' and 'Personal Finance Tracker App'. Signal conflict resolution favors the candidate due to a high CGPA and multiple deployed projects, demonstrating strong practical skills despite a non-perfect skill match.",
+                "parse_status": "Clean"
+            }
+        ],
+        "human_review_required": []
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "role": "Database Developer",
+  "required_skills": [
+    "MySQL or PostgreSQL", 
+    "Schema design & normalisation", 
+    "Query writing & optimisation", 
+    "Basic indexing"
+  ],
+  "preferred_skills": [
+    "MongoDB / Redis", "Stored procedures", 
+    "Aggregation pipelines", "ERD design"
+  ],
+  "cgpa_min": 6.0,
+  "slots": 3
+}
