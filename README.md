@@ -81,7 +81,7 @@ InternLoom-AI/
 Ensure your terminal environment is running on Python 3.10+.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/InternLoom-AI.git
+git clone https://github.com/nikhil-srinivas-2006/InternLoom-AI.git
 cd InternLoom-AI
 python -m venv venv
 source venv/Scripts/activate  # On Windows use: venv\Scripts\activate
