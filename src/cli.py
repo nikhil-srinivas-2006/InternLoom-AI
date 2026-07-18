@@ -155,30 +155,33 @@ def main():
     os.makedirs("output", exist_ok=True)
     os.makedirs("documents", exist_ok=True)
 
+    # 1. Save the Master Dashboard Output
     with open("output/sample_output.json", 'w', encoding='utf-8') as f:
         json.dump(master_output, f, indent=4)
         
+    # 2. Save the Parse Quality CSV
     with open("documents/parse_quality_report.csv", 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=["file", "status", "failed_what"])
         writer.writeheader()
         writer.writerows(parse_report)
 
+    # 3. NEW: Save the Extracted Student Details (Candidate Database)
+    extracted_export = []
+    for candidate in parsed_candidates:
+        if candidate["data"]:
+            # Convert the Pydantic object to a standard dictionary
+            record = candidate["data"].model_dump() 
+            # Attach the system metadata so you know which file it came from
+            record["source_file"] = candidate["file"]
+            record["parse_status"] = candidate["status"]
+            extracted_export.append(record)
+            
+    with open("output/extracted_student_details.json", 'w', encoding='utf-8') as f:
+        json.dump(extracted_export, f, indent=4)
+
+    # Clean up temporary drive folder if used
     if is_temp_dir: shutil.rmtree(working_dir)
-    print("\n✅ Pipeline complete! Master JSON and CSV generated.")
-    
-    # ... (Your existing file saving code) ...
-    with open("output/sample_output.json", 'w', encoding='utf-8') as f:
-        json.dump(master_output, f, indent=4)
-        
-    with open("documents/parse_quality_report.csv", 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=["file", "status", "failed_what"])
-        writer.writeheader()
-        writer.writerows(parse_report)
-
-    if is_temp_dir: 
-        shutil.rmtree(working_dir)
-        
-    print("\n✅ Pipeline complete! Master JSON and CSV generated.")
+    print("\n✅ Pipeline complete! Master JSON, CSV, and Student Details generated.")
     
     # ==========================================
     # LAUNCH DASHBOARD
